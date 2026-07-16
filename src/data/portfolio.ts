@@ -92,6 +92,7 @@ export interface Project {
   featured?: boolean;
   metric?: string;
   company?: string;
+  image?: string;
 }
 
 // Walmart Global Tech internship work. NDA-safe: no internal system codenames,
@@ -148,7 +149,6 @@ export const projects: Project[] = [
     link: 'https://github.com/GaganMishra305/Synapse',
     linkLabel: 'Source',
     accent: ['#38bdf8', '#22d3ee'],
-    featured: true,
     metric: 'Multimodal',
   },
   {
@@ -199,11 +199,14 @@ export const projects: Project[] = [
   {
     title: 'TraffiSense',
     blurb:
-      'Predictive, simulation-driven traffic command for large city events — modelling flow and congestion to keep a city breathing when crowds descend.',
-    tags: ['Python', 'Simulation', 'Prediction'],
+      'Predictive, simulation-driven traffic command for large city events. A live congestion heatmap over a real city map, ML corridor-saturation forecasts and resource planning — modelling flow so a city keeps breathing when 40,000 people descend on a stadium.',
+    tags: ['Python', 'ML Forecasting', 'Simulation', 'Dashboards'],
     link: 'https://github.com/GaganMishra305/TraffiSense',
     linkLabel: 'Source',
     accent: ['#22d3ee', '#f472b6'],
+    featured: true,
+    metric: 'AUC 0.798',
+    image: 'traffisense.jpg',
   },
 ];
 

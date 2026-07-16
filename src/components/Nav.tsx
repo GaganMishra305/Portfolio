@@ -38,6 +38,13 @@ const Nav = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   const go = (id: string) => {
     setOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -50,7 +57,7 @@ const Nav = () => {
       }`}
     >
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between px-5 transition-all duration-300 ${
+        className={`mx-auto flex max-w-6xl items-center justify-between px-5 transition-all duration-300 ${
           scrolled
             ? 'glass mx-3 rounded-2xl py-2 md:mx-auto'
             : 'py-2'
@@ -114,20 +121,45 @@ const Nav = () => {
       </nav>
 
       {open && (
-        <div className="glass mx-3 mt-2 rounded-2xl p-4 md:hidden">
-          <ul className="flex flex-col gap-1">
-            {LINKS.map((l) => (
-              <li key={l.id}>
-                <button
-                  onClick={() => go(l.id)}
-                  className="w-full rounded-lg px-4 py-3 text-left text-base font-medium text-[color:var(--muted)] transition-colors hover:bg-white/5 hover:text-white"
-                >
-                  {l.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+          {/* backdrop */}
+          <button
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md md:hidden"
+          />
+          {/* solid panel */}
+          <div className="relative z-50 mx-3 mt-2 rounded-2xl border border-white/10 bg-[#0b0d16] p-4 shadow-2xl md:hidden">
+            <ul className="flex flex-col gap-1">
+              {LINKS.map((l) => (
+                <li key={l.id}>
+                  <button
+                    onClick={() => go(l.id)}
+                    className={`w-full rounded-lg px-4 py-3 text-left text-base font-medium transition-colors hover:bg-white/5 ${
+                      active === l.id
+                        ? 'text-white'
+                        : 'text-[color:var(--muted)] hover:text-white'
+                    }`}
+                  >
+                    <span className="mono mr-2 text-xs text-[color:var(--c1)]">
+                      {String(LINKS.indexOf(l) + 1).padStart(2, '0')}.
+                    </span>
+                    {l.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-3 text-sm font-medium text-[color:var(--muted)] hover:text-white"
+            >
+              <GitHubIcon width={18} height={18} />
+              GitHub
+            </a>
+          </div>
+        </>
       )}
     </header>
   );
