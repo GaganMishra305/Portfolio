@@ -51,7 +51,12 @@ const CONFIG = {
       ],
     },
   },
-  seo: { title: 'Gagan Mishra', description: 'Portfolio of Gagan Mishra', imageURL: '' },
+  seo: {
+    title: 'Gagan Mishra — AI/ML Engineer & Systems Tinkerer',
+    description:
+      'Portfolio of Gagan Mishra — B.Tech @ IIIT Lucknow. I build intelligent systems, often from scratch: multimodal AI, physics engines, HTTP servers and more.',
+    imageURL: '',
+  },
   social: {
     linkedin: 'gagan-mishra-259ab726b',
     // x: 'arif_szn',
@@ -75,8 +80,7 @@ const CONFIG = {
     email: 'gaganmishra3005@gmail.com',
   },
   resume: {
-    fileUrl:
-      'gitprofile/public/Resume_v8_0.pdf', // Empty fileUrl will hide the `Download Resume` button.
+    fileUrl: '', // Resume download intentionally removed — the site IS the resume.
   },
   skills: [
     'Python',

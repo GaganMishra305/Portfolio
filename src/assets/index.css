@@ -1,137 +1,354 @@
 @import 'tailwindcss';
-@plugin "daisyui" {
-  themes:
-    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate',
-    'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden',
-    'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black',
-    'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade',
-    'night', 'coffee', 'winter', 'dim', 'nord', 'sunset', 'caramellatte',
-    'abyss', 'silk', 'procyon';
-}
 
-@plugin "daisyui/theme" {
-  name: 'procyon';
-  color-scheme: light;
+/* ============================================================
+   GAGAN MISHRA — bespoke portfolio styles
+   Dark, cinematic, aurora-lit. Built to captivate.
+   ============================================================ */
 
-  --color-base-100: #e3e3ed;
-  --color-base-200: #d1d1db;
-  --color-base-300: #bfbfc9;
-  --color-base-content: #2a2730;
-  --color-primary: #fc055b;
-  --color-primary-content: #ffffff;
-  --color-secondary: #219aaf;
-  --color-secondary-content: #ffffff;
-  --color-accent: #e8d03a;
-  --color-accent-content: #2a2730;
-  --color-neutral: #2a2730;
-  --color-neutral-content: #ffffff;
-  --color-info: #219aaf;
-  --color-info-content: #ffffff;
-  --color-success: #16a34a;
-  --color-success-content: #ffffff;
-  --color-warning: #e8d03a;
-  --color-warning-content: #2a2730;
-  --color-error: #dc2626;
-  --color-error-content: #ffffff;
-
-  /* border radius */
-  --radius-selector: 3rem;
-  --radius-field: 3rem;
-  --radius-box: 3rem;
-
-  /* base sizes */
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-
-  /* border size */
-  --border: 1px;
-
-  /* effects */
-  --depth: 1;
-  --noise: 0;
+:root {
+  --bg: #05060a;
+  --bg-soft: #0b0d16;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-border: rgba(255, 255, 255, 0.09);
+  --text: #e9ecf5;
+  --muted: #9aa3b8;
+  --c1: #22d3ee; /* cyan   */
+  --c2: #8b5cf6; /* violet */
+  --c3: #f472b6; /* pink   */
+  --c4: #38bdf8; /* sky    */
+  --grad: linear-gradient(120deg, var(--c1), var(--c2) 45%, var(--c3));
+  --font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 * {
   scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.5) transparent;
 }
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-@media screen and (min-width: 966px) {
-  ::-webkit-scrollbar,
-  .scroller {
-    width: 8px;
-    height: 8px;
-    background-color: #f1f1f1;
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 10px;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--c2), var(--c1));
+  border-radius: 10px;
 }
 
-svg {
-  vertical-align: unset;
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #fff;
 }
 
-.z-hover {
-  transition: all ease-in-out 0.3s !important;
+/* --------- animated aurora background --------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 60% at 50% 0%, rgba(34, 211, 238, 0.08), transparent 70%),
+    var(--bg);
+}
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.aurora::before {
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.55), transparent 60%);
+  animation: drift1 22s ease-in-out infinite alternate;
+}
+.aurora::after {
+  bottom: -15%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.5), transparent 60%);
+  animation: drift2 26s ease-in-out infinite alternate;
+}
+.aurora-blob {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.5), transparent 60%);
+  animation: drift3 30s ease-in-out infinite alternate;
 }
 
-.z-hover:hover,
-.z-hover:focus,
-.z-hover:active {
-  transition: transform 0.3s !important;
-  -ms-transform: scale(1.01) !important;
-  -webkit-transform: scale(1.01) !important;
-  transform: scale(1.01) !important;
-}
-
-.pb-0-important {
-  padding-bottom: 0 !important;
-}
-
-.fade-in {
-  opacity: 1;
-  animation-name: fadeIn;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 1s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+@keyframes drift1 {
   to {
+    transform: translate3d(18vw, 12vh, 0) scale(1.15);
+  }
+}
+@keyframes drift2 {
+  to {
+    transform: translate3d(-16vw, -10vh, 0) scale(1.2);
+  }
+}
+@keyframes drift3 {
+  to {
+    transform: translate3d(-12vw, 14vh, 0) scale(0.85);
+  }
+}
+
+/* subtle grid overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+}
+
+/* --------- custom cursor spotlight --------- */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 40;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.14),
+    rgba(34, 211, 238, 0.08) 40%,
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+/* --------- typography helpers --------- */
+.gradient-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--c1);
+}
+
+/* --------- glass panels --------- */
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+}
+
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--grad);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* --------- typing caret --------- */
+.caret::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1.05em;
+  margin-left: 4px;
+  background: var(--c1);
+  vertical-align: text-bottom;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --------- floating chips (hero) --------- */
+.float {
+  animation: floaty 6s ease-in-out infinite;
+}
+@keyframes floaty {
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* --------- marquee --------- */
+.marquee {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll-x 32s linear infinite;
+}
+.marquee.reverse {
+  animation-direction: reverse;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes scroll-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------- scroll reveal --------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------- tilt card --------- */
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+
+/* --------- buttons --------- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--grad);
+  color: #05060a;
+  font-weight: 700;
+  background-size: 200% auto;
+  transition:
+    background-position 0.5s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px -8px rgba(139, 92, 246, 0.6);
+}
+.btn-ghost {
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--c1);
+  background: rgba(34, 211, 238, 0.08);
+  transform: translateY(-2px);
+}
+
+/* --------- nav --------- */
+.nav-link {
+  position: relative;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--grad);
+  transition: width 0.3s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.section-num {
+  font-family: var(--mono);
+  color: var(--c1);
+  opacity: 0.7;
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
     opacity: 1;
+    transform: none;
   }
 }
