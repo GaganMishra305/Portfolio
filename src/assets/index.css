@@ -34,6 +34,11 @@ html {
 body {
   margin: 0;
   background: var(--bg);
+  background-image:
+    radial-gradient(1200px 700px at 85% 18%, rgba(34, 211, 238, 0.06), transparent 70%),
+    radial-gradient(1200px 700px at 12% 12%, rgba(139, 92, 246, 0.08), transparent 70%),
+    radial-gradient(1100px 800px at 100% 92%, rgba(244, 114, 182, 0.05), transparent 70%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
@@ -93,12 +98,12 @@ body {
 }
 .aurora-blob {
   position: absolute;
-  top: 35%;
-  left: 40%;
-  width: 40vw;
-  height: 40vw;
+  top: 30%;
+  right: 4%;
+  width: 42vw;
+  height: 42vw;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(110px);
   opacity: 0.4;
   background: radial-gradient(circle, rgba(244, 114, 182, 0.5), transparent 60%);
   animation: drift3 30s ease-in-out infinite alternate;
@@ -130,8 +135,8 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 46px 46px;
-  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  mask-image: radial-gradient(circle at 50% 35%, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at 50% 35%, black 60%, transparent 100%);
 }
 
 /* --------- custom cursor spotlight --------- */

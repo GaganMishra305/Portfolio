@@ -81,7 +81,7 @@ const Contact = () => (
       </Reveal>
     </div>
 
-    <footer className="mx-auto mt-24 max-w-6xl border-t border-white/5 pt-8 text-center">
+    <footer className="mx-auto mt-24 max-w-7xl border-t border-white/5 pt-8 text-center">
       <p className="mono text-xs text-[color:var(--muted)]">
         Designed &amp; built by Gagan Mishra · Crafted with React, Vite &amp; a
         lot of coffee.

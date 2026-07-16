@@ -10,7 +10,7 @@ const Projects = () => {
 
   return (
     <section id="work" className="relative px-5 py-24">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHeading
           num="02."
           kicker="Things I've built"

@@ -42,7 +42,7 @@ const Hero = () => {
       id="about"
       className="relative flex min-h-screen items-center px-5 pt-28 pb-16 md:pt-24"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.4fr_1fr]">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 md:grid-cols-[1.4fr_1fr]">
         {/* Left: copy */}
         <div>
           <p className="eyebrow mb-5 flex items-center gap-3">
@@ -162,7 +162,7 @@ const Hero = () => {
 
       {/* Stats strip */}
       <div className="pointer-events-none absolute inset-x-0 bottom-8 px-5">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center sm:text-left">
               <div className="gradient-text text-2xl font-bold sm:text-3xl">

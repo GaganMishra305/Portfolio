@@ -19,7 +19,7 @@ const Marquee = ({ reverse = false }: { reverse?: boolean }) => (
 
 const Skills = () => (
   <section id="skills" className="relative px-5 py-24">
-    <div className="mx-auto max-w-6xl">
+    <div className="mx-auto max-w-7xl">
       <SectionHeading num="01." kicker="What I work with" title="The toolkit" />
 
       <div className="space-y-3">
