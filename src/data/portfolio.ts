@@ -92,7 +92,6 @@ export interface Project {
   featured?: boolean;
   metric?: string;
   company?: string;
-  image?: string;
 }
 
 // Walmart Global Tech internship work. NDA-safe: no internal system codenames,
@@ -149,6 +148,7 @@ export const projects: Project[] = [
     link: 'https://github.com/GaganMishra305/Synapse',
     linkLabel: 'Source',
     accent: ['#38bdf8', '#22d3ee'],
+    featured: true,
     metric: 'Multimodal',
   },
   {
@@ -204,9 +204,7 @@ export const projects: Project[] = [
     link: 'https://github.com/GaganMishra305/TraffiSense',
     linkLabel: 'Source',
     accent: ['#22d3ee', '#f472b6'],
-    featured: true,
     metric: 'AUC 0.798',
-    image: 'traffisense.jpg',
   },
 ];
 
