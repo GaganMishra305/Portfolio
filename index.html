@@ -30,10 +30,68 @@
     <meta name="twitter:title" content="<%- metaTitle %>" />
     <meta name="twitter:description" content="<%- metaDescription %>" />
     <meta name="twitter:image" content="<%- metaImageURL %>" />
+
+    <!-- SEO -->
+    <link rel="canonical" href="https://gaganmishra305.github.io/Portfolio/" />
+    <meta name="author" content="Gagan Mishra" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="keywords"
+      content="Gagan Mishra, GaganMishra305, portfolio, software engineer, AI ML engineer, machine learning, distributed systems, backend, IIIT Lucknow, Walmart Global Tech intern, Python, C++, Go, Rust, React"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gaganmishra305.github.io/Portfolio/" />
+    <meta property="og:site_name" content="Gagan Mishra" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:alt" content="Gagan Mishra — portfolio" />
+    <meta name="twitter:image:alt" content="Gagan Mishra — portfolio" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gagan Mishra",
+        "alternateName": "GaganMishra305",
+        "url": "https://gaganmishra305.github.io/Portfolio/",
+        "image": "https://avatars.githubusercontent.com/u/70949548?v=4",
+        "jobTitle": "Software Engineer",
+        "description": "AI/ML engineer and systems tinkerer. B.Tech @ IIIT Lucknow, SWE Intern at Walmart Global Tech.",
+        "worksFor": { "@type": "Organization", "name": "Walmart Global Tech" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "IIIT Lucknow" },
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Distributed Systems",
+          "Backend Engineering",
+          "Python",
+          "C++",
+          "Go",
+          "Rust",
+          "React"
+        ],
+        "sameAs": [
+          "https://github.com/GaganMishra305",
+          "https://www.linkedin.com/in/gagan-mishra-259ab726b"
+        ]
+      }
+    </script>
     <%- googleAnalyticsScript %>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Gagan Mishra</h1>
+      <p>
+        AI/ML engineer and systems tinkerer. B.Tech @ IIIT Lucknow ('27) and a
+        Software Engineer Intern at Walmart Global Tech. I build intelligent
+        systems — often from scratch: multimodal AI, an agentic incident-triage
+        copilot, a distributed job scheduler, a 2D physics engine, and an HTTP
+        server from raw TCP sockets.
+      </p>
+      <p>
+        <a href="https://github.com/GaganMishra305">GitHub</a> |
+        <a href="https://www.linkedin.com/in/gagan-mishra-259ab726b">LinkedIn</a>
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -55,7 +55,7 @@ const CONFIG = {
     title: 'Gagan Mishra — AI/ML Engineer & Systems Tinkerer',
     description:
       'Portfolio of Gagan Mishra — B.Tech @ IIIT Lucknow. I build intelligent systems, often from scratch: multimodal AI, physics engines, HTTP servers and more.',
-    imageURL: '',
+    imageURL: 'https://avatars.githubusercontent.com/u/70949548?v=4',
   },
   social: {
     linkedin: 'gagan-mishra-259ab726b',
