@@ -10,7 +10,7 @@ export const profile = {
   tagline: 'I build intelligent systems — often from scratch.',
   location: 'India',
   blurb:
-    "B.Tech @ IIIT Lucknow ('27) and a Software Engineer Intern at Walmart Global Tech. I live at the intersection of AI/ML and low-level systems — training multimodal models one day, writing a physics engine or an HTTP server from raw TCP sockets the next. I ship end-to-end: from the math, to the backend, to the pixels.",
+    "B.Tech @ IIIT Lucknow ('27) with software engineering experience at Walmart Global Tech. I live at the intersection of AI/ML and low-level systems — training multimodal models one day, writing a physics engine or an HTTP server from raw TCP sockets the next. I ship end-to-end: from the math, to the backend, to the pixels.",
   roles: [
     'AI / ML Engineer',
     'Full-Stack Developer',
@@ -20,7 +20,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: 'WGT', label: 'SWE Intern @ Walmart' },
+  { value: 'WGT', label: 'Walmart Global Tech' },
   { value: '70+', label: 'Public repositories' },
   { value: "'27", label: 'IIIT Lucknow, B.Tech' },
   { value: '∞', label: 'Things built from scratch' },

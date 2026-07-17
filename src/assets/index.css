@@ -340,6 +340,14 @@ body {
   width: 100%;
 }
 
+/* hero entrance: hide animated bits until anime.js reveals them (no FOUC) */
+.hero-anim .hero-letter,
+.hero-anim [data-reveal='block'],
+.hero-anim [data-reveal='eyebrow'] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
 .section-num {
   font-family: var(--mono);
   color: var(--c1);

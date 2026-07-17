@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { animate, createTimeline, stagger } from 'animejs';
 import { profile, stats, socials } from '../data/portfolio';
 import { ArrowDownIcon, GitHubIcon, LinkedInIcon, MailIcon } from './Icons';
 
@@ -22,9 +23,7 @@ const useTypewriter = (words: string[]) => {
         setDel(false);
         return setI((n) => n + 1);
       }
-      setText((cur) =>
-        del ? cur.slice(0, -1) : word.slice(0, cur.length + 1),
-      );
+      setText((cur) => (del ? cur.slice(0, -1) : word.slice(0, cur.length + 1)));
     }, ms);
     return () => clearTimeout(t);
   }, [text, del, i, words]);
@@ -32,35 +31,115 @@ const useTypewriter = (words: string[]) => {
   return text;
 };
 
+/** Renders a word as individual animatable letter spans. */
+const Letters = ({ text, gradient }: { text: string; gradient?: boolean }) =>
+  [...text].map((ch, i) => (
+    <span
+      key={i}
+      className={`hero-letter inline-block ${gradient ? 'gradient-text' : ''}`}
+    >
+      {ch}
+    </span>
+  ));
+
 const chips = ['PyTorch', 'Go', 'Rust', 'C++', 'FastAPI', 'React', 'LangGraph'];
 
 const Hero = () => {
   const typed = useTypewriter(profile.roles);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const [motion] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
+
+  useEffect(() => {
+    if (!motion || !rootRef.current) return;
+    const root = rootRef.current;
+    const letters = root.querySelectorAll('.hero-letter');
+    const eyebrow = root.querySelector('[data-reveal="eyebrow"]');
+    const blocks = root.querySelectorAll('[data-reveal="block"]');
+    const avatar = document.querySelector('[data-reveal="avatar"]');
+
+    const tl = createTimeline({
+      defaults: { ease: 'outExpo', duration: 850 },
+    });
+
+    if (eyebrow)
+      tl.add(eyebrow, { opacity: [0, 1], translateX: [-16, 0], duration: 600 });
+
+    tl.add(
+      letters,
+      {
+        opacity: [0, 1],
+        translateY: [46, 0],
+        rotateZ: [7, 0],
+        duration: 720,
+        delay: stagger(26),
+      },
+      '-=350',
+    ).add(
+      blocks,
+      { opacity: [0, 1], translateY: [18, 0], delay: stagger(90) },
+      '-=450',
+    );
+
+    if (avatar)
+      animate(avatar, {
+        opacity: [0, 1],
+        scale: [0.85, 1],
+        duration: 1100,
+        ease: 'outElastic(1, .7)',
+        delay: 350,
+      });
+
+    return () => {
+      tl.pause();
+    };
+  }, [motion]);
 
   return (
     <section
       id="about"
       className="relative flex min-h-screen flex-col justify-center px-5 pt-28 pb-16 md:pt-24"
     >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 md:grid-cols-[1.4fr_1fr]">
+      <div
+        ref={rootRef}
+        className={`mx-auto grid w-full max-w-7xl items-center gap-12 md:grid-cols-[1.4fr_1fr] ${
+          motion ? 'hero-anim' : ''
+        }`}
+      >
         {/* Left: copy */}
         <div>
-          <p className="eyebrow mb-5 flex items-center gap-3">
+          <p
+            data-reveal="eyebrow"
+            className="eyebrow mb-5 flex items-center gap-3"
+          >
             <span className="inline-block h-px w-8 bg-[color:var(--c1)]" />
             Hi, my name is
           </p>
           <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            <span className="gradient-text">Gagan</span> Mishra
+            <Letters text="Gagan" gradient />{' '}
+            <Letters text="Mishra" />
           </h1>
-          <div className="mono mt-4 h-8 text-lg text-[color:var(--muted)] sm:text-xl">
+          <div
+            data-reveal="block"
+            className="mono mt-4 h-8 text-lg text-[color:var(--muted)] sm:text-xl"
+          >
             <span className="caret text-white">{typed}</span>
           </div>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-[color:var(--muted)] sm:text-lg">
+          <p
+            data-reveal="block"
+            className="mt-6 max-w-xl text-base leading-relaxed text-[color:var(--muted)] sm:text-lg"
+          >
             {profile.blurb}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div
+            data-reveal="block"
+            className="mt-8 flex flex-wrap items-center gap-4"
+          >
             <button
               onClick={() =>
                 document
@@ -83,7 +162,7 @@ const Hero = () => {
             </button>
           </div>
 
-          <div className="mt-8 flex items-center gap-5">
+          <div data-reveal="block" className="mt-8 flex items-center gap-5">
             <a
               href={socials.github}
               target="_blank"
@@ -113,7 +192,11 @@ const Hero = () => {
         </div>
 
         {/* Right: avatar */}
-        <div className="relative mx-auto hidden md:block">
+        <div
+          data-reveal="avatar"
+          className="relative mx-auto hidden md:block"
+          style={motion ? { opacity: 0 } : undefined}
+        >
           <div className="relative h-64 w-64 lg:h-72 lg:w-72">
             <div
               className="absolute inset-0 rounded-full opacity-70 blur-2xl"
