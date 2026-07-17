@@ -91,7 +91,7 @@ const ProjectCard = ({ p, featured }: { p: Project; featured?: boolean }) => {
     </>
   );
 
-  const className = `tilt glass glow-border group relative flex flex-col overflow-hidden rounded-2xl p-6 ${
+  const className = `tilt glass glow-border group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 ${
     featured ? 'md:p-7' : ''
   }`;
 

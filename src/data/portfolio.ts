@@ -41,6 +41,19 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
+    label: 'Agentic AI',
+    items: [
+      'LangGraph',
+      'MCP',
+      'RAG',
+      'Multi-agent Systems',
+      'Tool Use',
+      'Guardrails',
+      'LLM Orchestration',
+      'State Machines',
+    ],
+  },
+  {
     label: 'Languages',
     items: ['Python', 'C++', 'Go', 'Rust', 'TypeScript', 'JavaScript', 'Java'],
   },
@@ -50,11 +63,9 @@ export const skillGroups: SkillGroup[] = [
       'PyTorch',
       'TensorFlow',
       'scikit-learn',
-      'LangGraph',
       'OpenCV',
       'Pandas',
       'NumPy',
-      'RAG',
     ],
   },
   {
@@ -117,94 +128,93 @@ export const experienceProjects: Project[] = [
   },
 ];
 
+// Personal & open-source projects, ordered by most recent GitHub activity.
+// Blurbs kept a similar length so every card stays the same size.
 export const projects: Project[] = [
-  {
-    title: 'VulnPilot',
-    blurb:
-      'AI-powered security automation platform orchestrating 6+ tools (Nmap, SQLMap, WPScan) with a Groq-SDK reasoning layer, no-code workflows, and real-time dashboards. Cut vulnerability triage time by 40%.',
-    tags: ['Python', 'Groq SDK', 'Security', 'Automation'],
-    link: 'https://www.youtube.com/watch?v=_qtCN6bvSeA',
-    linkLabel: 'Watch demo',
-    accent: ['#22d3ee', '#8b5cf6'],
-    featured: true,
-    metric: '−40% triage time',
-  },
-  {
-    title: 'SmartEd',
-    blurb:
-      'Personalized learning platform with 3 multimodal AI agents and a recommendation engine tracking 4 metrics. LangGraph + FastAPI backend serving 200+ concurrent users — 25% higher study efficiency, 18% better outcomes.',
-    tags: ['LangGraph', 'FastAPI', 'Multi-agent', 'RecSys'],
-    link: 'https://github.com/Personalized-SmartEd',
-    linkLabel: 'View org',
-    accent: ['#8b5cf6', '#f472b6'],
-    featured: true,
-    metric: '200+ concurrent users',
-  },
-  {
-    title: 'Synapse',
-    blurb:
-      'A multimodal AI system stitching together vision, language and audio into a single reasoning pipeline. An exploration of how far you can push cross-modal understanding on a student budget.',
-    tags: ['PyTorch', 'Multimodal', 'Deep Learning'],
-    link: 'https://github.com/GaganMishra305/Synapse',
-    linkLabel: 'Source',
-    accent: ['#38bdf8', '#22d3ee'],
-    featured: true,
-    metric: 'Multimodal',
-  },
-  {
-    title: 'physix2d',
-    blurb:
-      'A 2D physics engine written in C++ from scratch — rigid bodies, collisions, constraints and a pile of demos. No libraries, just the math and a lot of stubbornness.',
-    tags: ['C++', 'Physics', 'From scratch'],
-    link: 'https://github.com/GaganMishra305/physix2d',
-    linkLabel: 'Source',
-    accent: ['#f472b6', '#8b5cf6'],
-  },
-  {
-    title: 'NoPhishing',
-    blurb:
-      'An ML-based browser extension that detects phishing links on the fly, scoring URLs in real time before you ever click through to the trap.',
-    tags: ['Python', 'ML', 'Browser Extension'],
-    link: 'https://github.com/GaganMishra305/NoPhishing',
-    linkLabel: 'Source',
-    accent: ['#22d3ee', '#38bdf8'],
-  },
-  {
-    title: 'Nugget-bot',
-    blurb:
-      'A RAG-powered chatbot for restaurant recommendations — retrieval-augmented generation grounding an LLM in real menus, reviews and vibes.',
-    tags: ['RAG', 'LLM', 'NLP'],
-    link: 'https://github.com/GaganMishra305/Nugget-bot',
-    linkLabel: 'Source',
-    accent: ['#8b5cf6', '#22d3ee'],
-  },
-  {
-    title: 'HTTP-Server',
-    blurb:
-      'An HTTP server built up from raw TCP sockets in Go — parsing requests, routing, and responses hand-rolled to really understand what a framework hides from you.',
-    tags: ['Go', 'Systems', 'Networking'],
-    link: 'https://github.com/GaganMishra305/HTTP-Server',
-    linkLabel: 'Source',
-    accent: ['#38bdf8', '#8b5cf6'],
-  },
   {
     title: 'ShockFits',
     blurb:
-      'A chess engine written from scratch in C++ — board representation, move generation and search. Because the best way to learn something is to build it.',
+      'A chess engine written from scratch in C++ — board representation, legal move generation and a search that actually plays. Built to learn by building.',
     tags: ['C++', 'Algorithms', 'Search'],
     link: 'https://github.com/GaganMishra305/ShockFits',
     linkLabel: 'Source',
     accent: ['#f472b6', '#38bdf8'],
   },
   {
+    title: 'HTTP-Server',
+    blurb:
+      'An HTTP server built up from raw TCP sockets in Go — hand-rolled request parsing, routing and responses to see exactly what a web framework hides.',
+    tags: ['Go', 'Systems', 'Networking'],
+    link: 'https://github.com/GaganMishra305/HTTP-Server',
+    linkLabel: 'Source',
+    accent: ['#38bdf8', '#8b5cf6'],
+  },
+  {
+    title: 'physix2d',
+    blurb:
+      'A 2D physics engine written from scratch in C++ — rigid bodies, collisions and constraints, with a pile of demos. No libraries, just the math.',
+    tags: ['C++', 'Physics', 'From scratch'],
+    link: 'https://github.com/GaganMishra305/physix2d',
+    linkLabel: 'Source',
+    accent: ['#f472b6', '#8b5cf6'],
+  },
+  {
     title: 'TraffiSense',
     blurb:
-      'Predictive, simulation-driven traffic command for large city events. A live congestion heatmap over a real city map, ML corridor-saturation forecasts and resource planning — modelling flow so a city keeps breathing when 40,000 people descend on a stadium.',
+      'Predictive, simulation-driven traffic command for big city events — a live congestion heatmap, ML corridor-saturation forecasts and resource planning.',
     tags: ['Python', 'ML Forecasting', 'Simulation', 'Dashboards'],
     link: 'https://github.com/GaganMishra305/TraffiSense',
     linkLabel: 'Source',
     accent: ['#22d3ee', '#f472b6'],
     metric: 'AUC 0.798',
+  },
+  {
+    title: 'VulnPilot',
+    blurb:
+      'AI security automation orchestrating 6+ tools (Nmap, SQLMap, WPScan) behind a Groq-driven reasoning layer, no-code workflows and real-time dashboards.',
+    tags: ['Python', 'Groq SDK', 'Security', 'Automation'],
+    link: 'https://www.youtube.com/watch?v=_qtCN6bvSeA',
+    linkLabel: 'Watch demo',
+    accent: ['#22d3ee', '#8b5cf6'],
+    metric: '−40% triage time',
+  },
+  {
+    title: 'NoPhishing',
+    blurb:
+      'An ML-based browser extension that flags phishing links on the fly, scoring every URL in real time before you ever click through to the trap.',
+    tags: ['Python', 'ML', 'Browser Extension'],
+    link: 'https://github.com/GaganMishra305/NoPhishing',
+    linkLabel: 'Source',
+    accent: ['#22d3ee', '#38bdf8'],
+  },
+  {
+    title: 'Synapse',
+    blurb:
+      'A multimodal AI system stitching vision, language and audio into one reasoning pipeline — pushing cross-modal understanding on a student budget.',
+    tags: ['PyTorch', 'Multimodal', 'Deep Learning'],
+    link: 'https://github.com/GaganMishra305/Synapse',
+    linkLabel: 'Source',
+    accent: ['#38bdf8', '#22d3ee'],
+    metric: 'Multimodal',
+  },
+  {
+    title: 'Nugget-bot',
+    blurb:
+      'A RAG-powered chatbot for restaurant recommendations — retrieval-augmented generation grounding an LLM in real menus, reviews and honest vibes.',
+    tags: ['RAG', 'LLM', 'NLP'],
+    link: 'https://github.com/GaganMishra305/Nugget-bot',
+    linkLabel: 'Source',
+    accent: ['#8b5cf6', '#22d3ee'],
+  },
+  {
+    title: 'SmartEd',
+    blurb:
+      'A personalized learning platform with 3 multimodal AI agents and a recommendation engine on a LangGraph + FastAPI backend serving 200+ users.',
+    tags: ['LangGraph', 'FastAPI', 'Multi-agent', 'RecSys'],
+    link: 'https://github.com/Personalized-SmartEd',
+    linkLabel: 'View org',
+    accent: ['#8b5cf6', '#f472b6'],
+    metric: '200+ users',
   },
 ];
 
